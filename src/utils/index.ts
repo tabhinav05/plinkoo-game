@@ -1,1 +1,1 @@
-export const baseURL = "http://localhost:3000";
+export const baseURL = "https://plinkoo-backend-izt7.onrender.com";
