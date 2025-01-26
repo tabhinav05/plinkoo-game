@@ -7,6 +7,7 @@ import { baseURL } from "../utils";
 export function Game() {
   const [ballManager, setBallManager] = useState<BallManager>();
   const canvasRef = useRef<any>();
+  const [message,setMessage] = useState('The first ball may take up to 30 seconds. Please wait...')
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -18,6 +19,8 @@ export function Game() {
   }, [canvasRef]);
 
   return (
+    <>
+                <p>{message}</p>
     <div className="flex flex-col lg:flex-row items-center justify-center">
       <canvas ref={canvasRef} width="800" height="800"></canvas>
       <Button
@@ -27,6 +30,7 @@ export function Game() {
             data: 1,
           });
           if (ballManager) {
+            setMessage('')
             ballManager.addBall(response.data.point);
           }
         }}
@@ -34,5 +38,6 @@ export function Game() {
         Add ball
       </Button>
     </div>
+</>
   );
 }
